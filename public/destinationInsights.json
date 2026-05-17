@@ -1,0 +1,202 @@
+[
+  {
+    "id": "goa",
+    "crowdLevel": "High",
+    "travelDifficulty": "Easy",
+    "climateComfort": "Medium",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "November – February",
+    "safetyNote": "Avoid afternoon beach travel during summer and carry sunscreen for long days outdoors.",
+    "travelSuggestion": "Best for beach and friend trips with lively evenings and comfortable coastal stays."
+  },
+  {
+    "id": "pondicherry",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "October – March",
+    "safetyNote": "Keep a water bottle handy and explore the French Quarter in the cooler mornings.",
+    "travelSuggestion": "Enjoy laid-back coastal strolls, heritage cafes, and peaceful promenade views."
+  },
+  {
+    "id": "gokarna",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "November – February",
+    "safetyNote": "Respect the quieter beaches and use sturdy footwear for coastal trails.",
+    "travelSuggestion": "Choose calm beach walks and sunset evenings at peaceful seaside shacks."
+  },
+  {
+    "id": "ooty",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "October – March",
+    "safetyNote": "Carry warm layers and stay on marked hiking paths at higher elevations.",
+    "travelSuggestion": "Relax by the lake and discover tea gardens before dawn for the best views."
+  },
+  {
+    "id": "coorg",
+    "crowdLevel": "Low",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "September – March",
+    "safetyNote": "Carry insect repellent on forest walks and avoid wet trails during heavy monsoon.",
+    "travelSuggestion": "Plan a coffee estate stay, waterfall visit, and a relaxed nature walk."
+  },
+  {
+    "id": "munnar",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "October – May",
+    "safetyNote": "Use sun protection on tea garden walks and avoid foggy hilltop hikes after rainfall.",
+    "travelSuggestion": "Enjoy misty tea trails and scenic viewpoints with a calm, nature-focused itinerary."
+  },
+  {
+    "id": "meghalaya",
+    "crowdLevel": "Low",
+    "travelDifficulty": "Moderate",
+    "climateComfort": "High",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "October – February",
+    "safetyNote": "Carry rain gear and prepare for wet trails around waterfalls and root bridges.",
+    "travelSuggestion": "Explore living root bridges and valley trails for lush, rainforest travel."
+  },
+  {
+    "id": "wayanad",
+    "crowdLevel": "Low",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "September – May",
+    "safetyNote": "Carry a light jacket and stay aware of wildlife zones in forest areas.",
+    "travelSuggestion": "Take peaceful plantation walks and enjoy quiet lakes and caves."
+  },
+  {
+    "id": "jaipur",
+    "crowdLevel": "High",
+    "travelDifficulty": "Easy",
+    "climateComfort": "Medium",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "October – February",
+    "safetyNote": "Stay hydrated and book palace visits early to avoid the midday heat.",
+    "travelSuggestion": "Combine heritage sightseeing with local crafts and palace walks in the pink city."
+  },
+  {
+    "id": "hampi",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "Medium",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "October – February",
+    "safetyNote": "Wear sturdy shoes across rocky ruins and avoid walking alone after sunset.",
+    "travelSuggestion": "Rent a bicycle to move between temples and watch sunsets from ancient hills."
+  },
+  {
+    "id": "mysore",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "October – February",
+    "safetyNote": "Visit the palace after dusk and keep valuables secure in crowded markets.",
+    "travelSuggestion": "Enjoy royal architecture, gardens, and a calm cultural route through the city."
+  },
+  {
+    "id": "tirupati",
+    "crowdLevel": "High",
+    "travelDifficulty": "Easy",
+    "climateComfort": "Medium",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "November – February",
+    "safetyNote": "Maintain patience in queues and carry light, respectful clothing for temple visits.",
+    "travelSuggestion": "Plan a quiet morning darshan and explore nearby spiritual sites."
+  },
+  {
+    "id": "varanasi",
+    "crowdLevel": "High",
+    "travelDifficulty": "Moderate",
+    "climateComfort": "Medium",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "October – February",
+    "safetyNote": "Dress respectfully at ghats and avoid crowded river edges after dark.",
+    "travelSuggestion": "Experience sunrise boat rides, evening aarti, and ancient temple walks."
+  },
+  {
+    "id": "rameshwaram",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "October – March",
+    "safetyNote": "Respect temple customs, stay hydrated, and avoid midday beach walks in the heat.",
+    "travelSuggestion": "Combine pilgrimage with calm coastal exploration and local temple rituals."
+  },
+  {
+    "id": "manali",
+    "crowdLevel": "High",
+    "travelDifficulty": "Moderate",
+    "climateComfort": "Medium",
+    "budgetCategory": "Premium",
+    "bestTime": "April – June",
+    "safetyNote": "Pack warm layers and check weather for mountain passes before heading out.",
+    "travelSuggestion": "Mix adventure sports with restful mountain views and riverside cafes."
+  },
+  {
+    "id": "ladakh",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Hard",
+    "climateComfort": "Medium",
+    "budgetCategory": "Premium",
+    "bestTime": "May – September",
+    "safetyNote": "Acclimatize before high-altitude treks and avoid strenuous activity on the first day.",
+    "travelSuggestion": "Take gentle lake tours and plan short motorbike rides between scenic passes."
+  },
+  {
+    "id": "rishikesh",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "September – March",
+    "safetyNote": "Wear safe shoes on river trails and choose reputable rafting operators.",
+    "travelSuggestion": "Balance yoga mornings with adventurous river activities and spiritual walks."
+  },
+  {
+    "id": "alleppey",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "August – April",
+    "safetyNote": "Choose a trusted houseboat captain and carry insect repellent for dusky waterside walks.",
+    "travelSuggestion": "Book a calm houseboat cruise and explore village life on the backwaters."
+  },
+  {
+    "id": "ziro-valley",
+    "crowdLevel": "Low",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Budget Friendly",
+    "bestTime": "October – April",
+    "safetyNote": "Respect local communities and stay on safe trails during evening walks.",
+    "travelSuggestion": "Enjoy the quiet valley, rice field views, and authentic homestays."
+  },
+  {
+    "id": "kerala",
+    "crowdLevel": "Moderate",
+    "travelDifficulty": "Easy",
+    "climateComfort": "High",
+    "budgetCategory": "Mid-Range",
+    "bestTime": "November – February",
+    "safetyNote": "Keep rain gear handy and book a trusted houseboat stay for a smooth experience.",
+    "travelSuggestion": "Relax in the backwaters and savor local cuisine during a calm waterside stay."
+  }
+]

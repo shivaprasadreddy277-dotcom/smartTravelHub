@@ -1,0 +1,84 @@
+.destination-card {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e8edf4;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+}
+
+.destination-image {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  min-height: 200px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.destination-category {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 0.94rem;
+}
+
+.budget-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.destination-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #2563eb;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.destination-description {
+  margin: 0;
+  color: #475569;
+  line-height: 1.75;
+}
+
+.destination-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.82rem;
+}
+
+.destination-button {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.destination-button:hover {
+  background: #1d4ed8;
+}

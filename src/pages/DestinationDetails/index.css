@@ -1,0 +1,283 @@
+.details-page {
+  display: grid;
+  gap: 24px;
+}
+
+.details-header {
+  display: grid;
+  gap: 16px;
+}
+
+.details-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.details-back-button {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #334155;
+  padding: 10px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.details-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.details-gallery img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.details-facts-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 24px;
+}
+
+.fact-item {
+  padding: 18px;
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.fact-item span {
+  display: block;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.fact-item strong {
+  color: #0f172a;
+}
+
+.details-subsection {
+  padding: 24px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  margin-top: 24px;
+}
+
+.details-subsection h4 {
+  margin: 0 0 14px;
+  color: #0f172a;
+}
+
+.attraction-list,
+.packing-list {
+  display: grid;
+  gap: 10px;
+  padding-left: 18px;
+  color: #475569;
+}
+
+.attraction-list li,
+.packing-list li {
+  list-style: disc;
+}
+
+.details-accommodation {
+  margin-top: 24px;
+}
+
+.accommodation-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.accommodation-card {
+  padding: 20px;
+  border-radius: 22px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.accommodation-card h5 {
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+
+.accommodation-card p {
+  margin: 0 0 6px;
+  color: #475569;
+}
+
+.accommodation-card small {
+  color: #64748b;
+}
+
+.details-packing {
+  margin-top: 24px;
+}
+
+.details-packing h4 {
+  margin: 0 0 14px;
+}
+
+.details-back-button:hover {
+  background: #e2e8f0;
+}
+
+.details-label {
+  margin: 0;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.details-header h2 {
+  margin: 10px 0 0;
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.details-subtitle {
+  margin: 12px 0 0;
+  color: #475569;
+  max-width: 42rem;
+  line-height: 1.7;
+}
+
+.details-navigation {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.details-navigation button {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #334155;
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.details-navigation .active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.details-content {
+  padding: 24px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.05);
+}
+
+.details-content h3 {
+  margin: 0 0 14px;
+  color: #0f172a;
+}
+
+.details-content p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.insight-panel {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.05);
+}
+
+.insight-panel-header h3 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.insight-panel-header p {
+  margin: 8px 0 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.insight-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.insight-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.insight-card span {
+  display: block;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.insight-card strong {
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+.insight-guidance {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.insight-guidance-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.insight-guidance-card.highlighted {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.insight-guidance-card h4 {
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+
+.insight-guidance-card p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.details-loading,
+.details-error {
+  margin: 0;
+  color: #475569;
+}
+
+.details-error {
+  color: #b91c1c;
+}
+
+@media (max-width: 900px) {
+  .insight-grid,
+  .insight-guidance {
+    grid-template-columns: 1fr;
+  }
+}
