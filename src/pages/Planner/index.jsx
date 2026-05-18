@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { destinations } from '../../data/destinations'
 import { getUserLocalStorage, setUserLocalStorage } from '../../utils/storageUtils'
+import { getTripStatus, calculateTripDuration, generateBookingRef } from '../MyJourney/utils/dateUtils'
 import './index.css'
 
 const transportRates = {
@@ -60,6 +61,7 @@ const [transportType, setTransportType] = useState(() => {
   ) || 'Train'
 })
   const [tripDate, setTripDate] = useState('')
+  const [tripEndDate, setTripEndDate] = useState('')
   const [accommodationType, setAccommodationType] = useState('')
   const [savedTrips, setSavedTrips] = useState([])
   const [message, setMessage] = useState('')
@@ -195,6 +197,7 @@ const handleCancelPlanning = () => {
   setTransportType('Train')
   setAccommodationType('')
   setTripDate('')
+  setTripEndDate('')
 
   setShowBudget(false)
 
@@ -226,20 +229,42 @@ const handleCancelPlanning = () => {
       return
     }
 
+    if (!tripDate) {
+      setMessage(
+        'Please select a start date for your trip.'
+      )
+      return
+    }
+
+    // Auto-calculate end date from start date + duration if not set
+    let endDate = tripEndDate
+    if (!endDate && tripDate) {
+      const startDate = new Date(tripDate)
+      const calcEndDate = new Date(startDate)
+      calcEndDate.setDate(calcEndDate.getDate() + days - 1)
+      endDate = calcEndDate.toISOString().split('T')[0]
+    }
+
+    const tripDuration = calculateTripDuration(tripDate, endDate)
+
     const trip = {
       id: `${destinationId}-${Date.now()}`,
+      bookingRef: generateBookingRef(destinationId),
       destinationId,
       destination: selectedDestination.name,
-      date: tripDate || 'Date not selected',
-      duration: `${days} days`,
+      startDate: tripDate,
+      endDate: endDate || tripDate,
+      duration: tripDuration,
+      durationText: `${tripDuration} night${tripDuration !== 1 ? 's' : ''}`,
       travelers,
       transportType,
       accommodationType,
-      budget: totalBudget,
+      totalBudget: totalBudget,
 
-      status: getStatusFromDate(tripDate),
+      status: getTripStatus(tripDate, endDate),
 
-      bookingStatus: 'Booking Completed',
+      bookingStatus: 'Confirmed',
+      bookingDate: new Date().toISOString(),
 
       summary: {
         transportCost,
@@ -248,6 +273,8 @@ const handleCancelPlanning = () => {
         activitiesCost,
         costPerPerson,
       },
+
+      cancellationPolicy: 'Free cancellation up to 7 days before trip',
     }
 
     const updatedTrips = [trip, ...savedTrips]
@@ -424,7 +451,7 @@ const handleCancelPlanning = () => {
           {/* Trip Date */}
           <label className="planner-field">
 
-            <span>Trip Date</span>
+            <span>Trip Start Date</span>
 
             <input
               type="date"
@@ -432,6 +459,22 @@ const handleCancelPlanning = () => {
               onChange={(e) =>
                 setTripDate(e.target.value)
               }
+            />
+
+          </label>
+
+          {/* Trip End Date */}
+          <label className="planner-field">
+
+            <span>Trip End Date</span>
+
+            <input
+              type="date"
+              value={tripEndDate}
+              onChange={(e) =>
+                setTripEndDate(e.target.value)
+              }
+              min={tripDate}
             />
 
           </label>

@@ -297,6 +297,70 @@
   color: #0f172a;
 }
 
+/* Journey Tabs */
+.journey-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 2px solid #e5e8f0;
+  overflow-x: auto;
+}
+
+.journey-tab {
+  background: transparent;
+  border: none;
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.journey-tab:hover {
+  color: #2563eb;
+}
+
+.journey-tab.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+/* Empty State Card */
+.empty-state-card {
+  padding: 40px;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  text-align: center;
+}
+
+.empty-state-card p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.empty-state-card p:first-child {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.empty-state-card.large {
+  padding: 60px 40px;
+}
+
+.reviews-section {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+
 .review-list {
   display: grid;
   gap: 16px;
