@@ -13,10 +13,7 @@ function DestinationDetails({ selectedDestinationId, onExplore }) {
   const destination =
     destinations.find((item) => item.id === selectedDestinationId) || destinations[0]
 
-  const galleryImages = [
-    destination.image,
-    ...(destination.gallery ?? [destination.image, destination.image, destination.image]),
-  ].slice(0, 4)
+
   const famousForText = Array.isArray(destination.famousFor)
     ? destination.famousFor.join(', ')
     : destination.famousFor
@@ -88,7 +85,8 @@ function DestinationDetails({ selectedDestinationId, onExplore }) {
           src={destination.image}
           alt={`${destination.name} main view`}
           onError={(event) => {
-            event.currentTarget.src = FALLBACK_IMAGE_URL
+            event.currentTarget.onerror = null;
+            event.currentTarget.src = FALLBACK_IMAGE_URL;
           }}
         />
         <div className="details-hero-banner">
@@ -97,18 +95,7 @@ function DestinationDetails({ selectedDestinationId, onExplore }) {
         </div>
       </div>
 
-      <section className="details-gallery-grid">
-        {galleryImages.slice(1).map((image, index) => (
-          <img
-            key={`${destination.id}-gallery-${index}`}
-            src={image}
-            alt={`${destination.name} gallery ${index + 1}`}
-            onError={(event) => {
-              event.currentTarget.src = FALLBACK_IMAGE_URL
-            }}
-          />
-        ))}
-      </section>
+
 
       <div className="details-navigation">
         <button

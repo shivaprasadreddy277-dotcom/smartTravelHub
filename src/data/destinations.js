@@ -45,7 +45,7 @@ export const destinations = [
   {
     id: 'goa',
     name: 'Goa',
-    image: localDestinationImages.goa.image,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Palolem_Beach%2C_South_Goa.jpg/3840px-Palolem_Beach%2C_South_Goa.jpg',
     gallery: localDestinationImages.goa.gallery,
     category: 'Beach',
     budget: 'Mid-Range',
@@ -70,7 +70,7 @@ export const destinations = [
   {
     id: 'kerala',
     name: 'Kerala Backwaters',
-    image: localDestinationImages.kerala.image,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/House_Boat_DSW.jpg',
     gallery: localDestinationImages.kerala.gallery,
     category: 'Peaceful Escapes',
     budget: 'Mid-Range',
@@ -145,12 +145,7 @@ export const destinations = [
   {
     id: 'pondicherry',
     name: 'Pondicherry',
-    image: 'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Pondicherry-Rock_beach_aerial_view.jpg/3840px-Pondicherry-Rock_beach_aerial_view.jpg',
     category: 'Beach',
     budget: 'Mid-Range',
     bestMonth: 'Oct – Mar',
@@ -174,12 +169,7 @@ export const destinations = [
   {
     id: 'gokarna',
     name: 'Gokarna',
-    image: 'https://images.unsplash.com/photo-1493553895911-0055eca6402d?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Delight_india.jpg',
     category: 'Beach',
     budget: 'Budget Friendly',
     bestMonth: 'Nov – Feb',
@@ -203,12 +193,7 @@ export const destinations = [
   {
     id: 'coorg',
     name: 'Coorg',
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Tadiandamol_Valley%2C_Western_Ghats.jpg/3840px-Tadiandamol_Valley%2C_Western_Ghats.jpg',
     category: 'Nature',
     budget: 'Mid-Range',
     bestMonth: 'Sep – Mar',
@@ -232,12 +217,7 @@ export const destinations = [
   {
     id: 'munnar',
     name: 'Munnar',
-    image: 'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Munnar_Overview.jpg/3840px-Munnar_Overview.jpg',
     category: 'Nature',
     budget: 'Mid-Range',
     bestMonth: 'Oct – May',
@@ -261,12 +241,7 @@ export const destinations = [
   {
     id: 'chikmagalur',
     name: 'Chikmagalur',
-    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Shola_Grasslands_and_forests_in_the_Kudremukh_National_Park%2C_Western_Ghats%2C_Karnataka.jpg',
     category: 'Nature',
     budget: 'Mid-Range',
     bestMonth: 'Aug – Feb',
@@ -290,12 +265,7 @@ export const destinations = [
   {
     id: 'meghalaya',
     name: 'Meghalaya',
-    image: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Dawki_River%2C_Meghalaya%2C_India.jpg/3840px-Dawki_River%2C_Meghalaya%2C_India.jpg',
     category: 'Nature',
     budget: 'Mid-Range',
     bestMonth: 'Oct – Feb',
@@ -319,12 +289,7 @@ export const destinations = [
   {
     id: 'wayanad',
     name: 'Wayanad',
-    image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Blue%2C_Green_%26_White.jpg/3840px-Blue%2C_Green_%26_White.jpg',
     category: 'Nature',
     budget: 'Budget Friendly',
     bestMonth: 'Sep – May',
@@ -348,12 +313,7 @@ export const destinations = [
   {
     id: 'hampi',
     name: 'Hampi',
-    image: 'https://images.pexels.com/photos/3889843/pexels-photo-3889843.jpeg',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Wide_angle_of_Galigopuram_of_Virupaksha_Temple%2C_Hampi_%2804%29_%28cropped%29.jpg/3840px-Wide_angle_of_Galigopuram_of_Virupaksha_Temple%2C_Hampi_%2804%29_%28cropped%29.jpg',
     category: 'Heritage',
     budget: 'Budget Friendly',
     bestMonth: 'Oct – Feb',
@@ -377,12 +337,7 @@ export const destinations = [
   {
     id: 'mysore',
     name: 'Mysore',
-    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mysore_Palace_Morning.jpg/3840px-Mysore_Palace_Morning.jpg',
     category: 'Heritage',
     budget: 'Budget Friendly',
     bestMonth: 'Oct – Feb',
@@ -406,12 +361,7 @@ export const destinations = [
   {
     id: 'tirupati',
     name: 'Tirupati',
-    image: 'https://images.pexels.com/photos/3581364/pexels-photo-3581364.jpeg',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tirumala_090615.jpg/3840px-Tirumala_090615.jpg',
     category: 'Spiritual',
     budget: 'Budget Friendly',
     bestMonth: 'Nov – Feb',
@@ -435,12 +385,7 @@ export const destinations = [
   {
     id: 'varanasi',
     name: 'Varanasi',
-    image: 'https://images.pexels.com/photos/2413613/pexels-photo-2413613.jpeg',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg',
     category: 'Spiritual',
     budget: 'Budget Friendly',
     bestMonth: 'Oct – Feb',
@@ -464,12 +409,7 @@ export const destinations = [
   {
     id: 'rameshwaram',
     name: 'Rameshwaram',
-    image: 'https://images.pexels.com/photos/784879/pexels-photo-784879.jpeg',
-    gallery: [
-      'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
-    ],
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Ramanathaswamy_temple7.JPG/1920px-Ramanathaswamy_temple7.JPG',
     category: 'Spiritual',
     budget: 'Budget Friendly',
     bestMonth: 'Oct – Mar',
@@ -491,4 +431,5 @@ export const destinations = [
     ],
   },
 ]
+
 

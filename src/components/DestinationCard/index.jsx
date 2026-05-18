@@ -11,7 +11,8 @@ function DestinationCard({ destination, onExplore }) {
           src={destination.image}
           alt={destination.name}
           onError={(event) => {
-            event.currentTarget.src = FALLBACK_IMAGE_URL
+            event.currentTarget.onerror = null;
+            event.currentTarget.src = FALLBACK_IMAGE_URL;
           }}
         />
         <div className="destination-image-overlay">

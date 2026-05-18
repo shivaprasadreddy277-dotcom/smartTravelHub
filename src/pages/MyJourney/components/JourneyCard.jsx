@@ -24,7 +24,8 @@ function JourneyCard({
         src={imageSrc}
         alt={trip.destination}
         onError={(event) => {
-          event.currentTarget.src = FALLBACK_IMAGE_URL
+          event.currentTarget.onerror = null;
+          event.currentTarget.src = FALLBACK_IMAGE_URL;
         }}
       />
 

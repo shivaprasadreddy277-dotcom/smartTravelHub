@@ -81,6 +81,10 @@ function App() {
   }
 
   const handleExplore = (page, destinationId) => {
+    if (['planner', 'myjourney'].includes(page) && !user) {
+      setActivePage('login')
+      return
+    }
     if (destinationId) {
       setSelectedDestinationId(destinationId)
     }
