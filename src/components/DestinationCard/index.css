@@ -3,7 +3,9 @@
   gap: 16px;
   padding: 20px;
   border-radius: 24px;
-  background: #ffffff;
+  background: #ffffffdd;
+
+  border-top: 5px solid #60a5fa;
   border: 1px solid #e8edf4;
   box-shadow: 0 18px 32px rgba(15, 23, 42, 0.08);
   overflow: hidden;
@@ -98,7 +100,11 @@
   padding: 14px 20px;
   border: none;
   border-radius: 14px;
-  background: #2563eb;
+  background: linear-gradient(
+  135deg,
+  #3b82f6,
+  #60a5fa
+);
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;

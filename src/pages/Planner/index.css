@@ -2,7 +2,14 @@
 
 .planner-page {
   padding: 50px 6%;
-  background: #f4f7fb;
+
+  background: linear-gradient(
+    to bottom,
+    #f8fbff,
+    #f0fdf4,
+    #fff7ed
+  );
+
   min-height: 100vh;
 }
 

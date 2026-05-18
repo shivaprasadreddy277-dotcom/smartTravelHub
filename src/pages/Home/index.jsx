@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import HeroSection from '../../components/HeroSection'
 import DestinationCard from '../../components/DestinationCard'
 import FeatureGroupCard from '../../components/FeatureGroupCard'

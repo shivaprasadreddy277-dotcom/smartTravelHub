@@ -1,8 +1,15 @@
 .app-shell {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
-  background: #f8fafc;
+
+  background: linear-gradient(
+    to bottom,
+    #f8fbff,
+    #eef7ff,
+    #fff7ed
+  );
 }
 
 .content-area {
