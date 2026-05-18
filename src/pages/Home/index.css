@@ -67,6 +67,23 @@
   gap: 12px;
 }
 
+.home-featured-groups {
+  padding-top: 0;
+}
+
+.featured-groups-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.more-note {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin: 0;
+  padding-top: 8px;
+}
+
 .search-field input {
   width: 100%;
   padding: 16px 18px;
@@ -81,17 +98,102 @@
   font-size: 0.95rem;
 }
 
-.home-visuals {
+.search-options {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 360px;
+}
+
+.search-options label {
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.search-options select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.search-results-list {
+  display: grid;
   gap: 18px;
 }
 
-.home-visuals img {
-  width: 100%;
+.search-result-card {
+  padding: 24px;
   border-radius: 24px;
   border: 1px solid #e5e8ef;
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+  display: grid;
+  gap: 14px;
+}
+
+.destination-nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  border-radius: 24px;
   background: #f8fafc;
+  border: 1px solid #e5e8ef;
+}
+
+.destination-nav-label {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.destination-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.destination-nav-link {
+  color: #2563eb;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 10px 16px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.destination-nav-link:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.search-result-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+}
+
+.search-result-header p {
+  margin: 6px 0 0;
+  color: #64748b;
+}
+
+.search-result-meta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: #475569;
+  font-size: 0.95rem;
 }
 
 .home-section.search-results {

@@ -4,6 +4,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Planner from './pages/Planner'
 import MyJourney from './pages/MyJourney'
+import TravelFinder from './pages/TravelFinder'
+import Collections from './pages/Collections'
+import SearchDestinations from './pages/SearchDestinations'
 import DestinationDetails from './pages/DestinationDetails'
 import Login from './pages/Login'
 import './styles/app.css'
@@ -12,6 +15,9 @@ const pageMap = {
   home: Home,
   planner: Planner,
   myjourney: MyJourney,
+  travelfinder: TravelFinder,
+  collections: Collections,
+  search: SearchDestinations,
   destinationdetails: DestinationDetails,
   login: Login,
 }

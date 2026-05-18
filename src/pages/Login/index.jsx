@@ -1,80 +1,167 @@
-import { useState } from 'react'
-import './index.css'
+import { useState } from "react";
+import "./index.css";
 
 function Login({ user, onLogin }) {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [message, setMessage] = useState('')
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
+
     if (!username.trim() || !email.trim() || !password) {
-      setMessage('Please provide username, email, and password.')
-      return
+      setMessage("Please provide username, email, and password.");
+      return;
     }
 
     const loginData = {
       username: username.trim(),
       email: email.trim(),
-    }
+    };
 
-    onLogin(loginData)
-    setMessage(`Welcome, ${username.trim()}! You are ready to plan smarter trips.`)
-    setUsername('')
-    setEmail('')
-    setPassword('')
-  }
+    onLogin(loginData);
+
+    setMessage(
+      `Welcome, ${username.trim()}! Your next adventure starts now.`
+    );
+
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  };
 
   return (
-    <div className="login-page">
+    <section className="login-page">
+
+      {/* Left Side Image Content */}
+      <div className="login-banner">
+
+        <div className="banner-overlay">
+
+          <p className="travel-badge">
+            🌍 Smart Tourism Experience
+          </p>
+
+          <h1>
+            Explore India <br />
+            Beyond Destinations
+          </h1>
+
+          <p className="banner-description">
+            Discover peaceful escapes, weekend adventures,
+            budget-friendly trips, and unforgettable travel memories
+            with SmartTravelHub.
+          </p>
+
+          <div className="travel-quotes">
+            <p>
+              “Travel opens the door to new experiences and better memories.”
+            </p>
+
+            <p>
+              “The journey becomes beautiful when the planning becomes smart.”
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Right Side Login Panel */}
       <div className="login-panel">
-        <p className="login-label">Member access</p>
-        <h2>Sign in to save your journey plans.</h2>
+
+        <p className="login-label">
+          Member Access
+        </p>
+
+        <h2>
+          Sign in to continue your travel journey
+        </h2>
+
+        <p className="login-subtitle">
+          Save trips, manage journeys, and explore India smarter.
+        </p>
 
         {user ? (
+
           <div className="login-success">
-            <p>Welcome back, {user.username}. Your travel assistant is ready.</p>
+            <h3>
+              Welcome back, {user.username} 👋
+            </h3>
+
+            <p>
+              Your SmartTravelHub travel assistant is ready.
+            </p>
           </div>
+
         ) : (
-          <form className="login-form" onSubmit={handleSubmit}>
+
+          <form
+            className="login-form"
+            onSubmit={handleSubmit}
+          >
+
             <label>
               Username
+
               <input
                 type="text"
                 value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                placeholder="Your name"
+                onChange={(event) =>
+                  setUsername(event.target.value)
+                }
+                placeholder="Enter your username"
                 required
               />
             </label>
+
             <label>
-              Email address
+              Email Address
+
               <input
                 type="email"
                 value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(event) =>
+                  setEmail(event.target.value)
+                }
                 placeholder="you@example.com"
                 required
               />
             </label>
+
             <label>
               Password
+
               <input
                 type="password"
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder="Enter a secure password"
+                onChange={(event) =>
+                  setPassword(event.target.value)
+                }
+                placeholder="Enter your password"
                 required
               />
             </label>
-            <button type="submit">Login</button>
-            {message && <p className="login-message">{message}</p>}
+
+            <button type="submit">
+              Login to SmartTravelHub
+            </button>
+
+            {message && (
+              <p className="login-message">
+                {message}
+              </p>
+            )}
+
           </form>
+
         )}
+
       </div>
-    </div>
-  )
+
+    </section>
+  );
 }
 
-export default Login
+export default Login;

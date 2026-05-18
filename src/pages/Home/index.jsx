@@ -1,33 +1,21 @@
 import { useState } from 'react'
 import HeroSection from '../../components/HeroSection'
 import DestinationCard from '../../components/DestinationCard'
+import FeatureGroupCard from '../../components/FeatureGroupCard'
 import { destinations } from '../../data/destinations'
 import './index.css'
 
-const bannerOne = 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80'
-const bannerTwo = 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=800&q=80'
-const bannerThree = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
-
-const travelStyles = [
-  { id: 'nature', label: 'Nature Lover' },
-  { id: 'peaceful', label: 'Peaceful Traveler' },
-  { id: 'budget', label: 'Budget Traveler' },
-  { id: 'family', label: 'Family Traveler' },
-  { id: 'spiritual', label: 'Spiritual Traveler' },
-  { id: 'adventure', label: 'Adventure Traveler' },
-]
-
-const weekendOptions = [
-  { id: 'twoDay', label: '2-Day Trips' },
-  { id: 'threeDay', label: '3-Day Trips' },
-  { id: 'budgetWeekend', label: 'Budget Weekend' },
-  { id: 'peaceful', label: 'Peaceful Escapes' },
+const searchFilters = [
+  { id: 'all', label: 'All Fields' },
+  { id: 'name', label: 'Destination Name' },
+  { id: 'category', label: 'Category' },
+  { id: 'tag', label: 'Travel Tag' },
 ]
 
 function Home({ onExplore }) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedStyle, setSelectedStyle] = useState('nature')
-  const [selectedWeekend, setSelectedWeekend] = useState('twoDay')
+  const [searchField, setSearchField] = useState('all')
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   const normalizedSearch = searchQuery.trim().toLowerCase()
   const searchResults = normalizedSearch
@@ -35,6 +23,17 @@ function Home({ onExplore }) {
         const name = destination.name.toLowerCase()
         const category = destination.category.toLowerCase()
         const tags = destination.tags.map((tag) => tag.toLowerCase()).join(' ')
+
+        if (searchField === 'name') {
+          return name.includes(normalizedSearch)
+        }
+        if (searchField === 'category') {
+          return category.includes(normalizedSearch)
+        }
+        if (searchField === 'tag') {
+          return tags.includes(normalizedSearch)
+        }
+
         return (
           name.includes(normalizedSearch) ||
           category.includes(normalizedSearch) ||
@@ -42,61 +41,6 @@ function Home({ onExplore }) {
         )
       })
     : []
-
-  const styleMatches = destinations.filter((destination) => {
-    if (selectedStyle === 'nature') {
-      return (
-        destination.tags.includes('Nature Escape') ||
-        destination.category.includes('Hill') ||
-        destination.category.includes('Mountain') ||
-        destination.category.includes('River')
-      )
-    }
-    if (selectedStyle === 'peaceful') {
-      return destination.tags.includes('Peaceful') || destination.tags.includes('Relaxing')
-    }
-    if (selectedStyle === 'budget') {
-      return (
-        destination.budget === 'Budget Friendly' ||
-        destination.tags.includes('Budget Friendly') ||
-        destination.tags.includes('Student Friendly')
-      )
-    }
-    if (selectedStyle === 'family') {
-      return destination.tags.includes('Family Trip') || destination.tags.includes('Budget Friendly')
-    }
-    if (selectedStyle === 'spiritual') {
-      return destination.category === 'Pilgrimage' || destination.tags.includes('Peaceful')
-    }
-    if (selectedStyle === 'adventure') {
-      return destination.tags.includes('Adventure') || destination.category.includes('Adventure')
-    }
-    return false
-  })
-
-  const weekendMatches = destinations.filter((destination) => {
-    if (selectedWeekend === 'twoDay') {
-      return destination.duration.includes('2–3')
-    }
-    if (selectedWeekend === 'threeDay') {
-      return (
-        destination.duration.includes('3–4') ||
-        destination.duration.includes('3–5') ||
-        destination.duration.includes('4–6')
-      )
-    }
-    if (selectedWeekend === 'budgetWeekend') {
-      return (
-        destination.budget === 'Budget Friendly' ||
-        destination.tags.includes('Budget Friendly') ||
-        destination.tags.includes('Low Budget')
-      )
-    }
-    if (selectedWeekend === 'peaceful') {
-      return destination.tags.includes('Peaceful') || destination.tags.includes('Relaxing')
-    }
-    return false
-  })
 
   const trendingDestinations = destinations.filter((item) =>
     item.tags.some((tag) => ['Premium', 'Family Trip', 'Weekend Trip'].includes(tag)),
@@ -117,11 +61,74 @@ function Home({ onExplore }) {
     ),
   )
 
+  const featuredGroups = [
+    {
+      id: 'beginner',
+      title: 'Beginner Friendly Trips',
+      description: 'Safe, easy, and affordable options for first-time travelers.',
+      items: beginnerFriendlyTrips,
+    },
+    {
+      id: 'peaceful',
+      title: 'Peaceful Escapes',
+      description: 'Relaxing low-crowd destinations for calm nature and restful travel.',
+      items: peacefulEscapes,
+    },
+    {
+      id: 'trending',
+      title: 'Trending Destinations',
+      description: 'Popular destinations for easy planning and memorable stays.',
+      items: trendingDestinations,
+    },
+    {
+      id: 'hidden',
+      title: 'Hidden Gems',
+      description: 'Less crowded places with calm nature and thoughtful local experiences.',
+      items: hiddenGems,
+    },
+  ]
+
+  const featuredDestinationIds = new Set(
+    featuredGroups.flatMap((group) => group.items.map((item) => item.id)),
+  )
+
+  const allDestinations = destinations
+
+  const pageSections = [
+    { id: 'all-destinations', label: 'All Destinations' },
+    { id: 'search-destinations', label: 'Search' },
+    { id: 'featured-collections', label: 'Featured Collections' },
+    { id: 'travel-responsible', label: 'Travel Responsibly' },
+  ]
+
   return (
     <div className="home-page">
       <HeroSection onExplore={onExplore} />
 
-      <section className="home-section home-search-section">
+      <section className="destination-nav-bar">
+        <div className="destination-nav-label">Jump to</div>
+        <div className="destination-nav-links">
+          {pageSections.map((section) => (
+            <a key={section.id} href={`#${section.id}`} className="destination-nav-link">
+              {section.label}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-section home-destinations" id="all-destinations">
+        <div className="home-headline">
+          <h2>All Destinations</h2>
+          <p>Browse every destination available in one full list of travel ideas.</p>
+        </div>
+        <div className="destination-list">
+          {allDestinations.map((item) => (
+            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
+          ))}
+        </div>
+      </section>
+
+      <section className="home-section home-search-section" id="search-destinations">
         <div className="search-panel">
           <div>
             <h2>Search smart tourism destinations</h2>
@@ -136,21 +143,72 @@ function Home({ onExplore }) {
             />
           </div>
           {searchQuery && (
+            <div className="search-dropdown">
+              <button
+                type="button"
+                className="dropdown-button"
+                onClick={() => setIsFilterOpen((prev) => !prev)}
+              >
+                {searchFilters.find((filter) => filter.id === searchField)?.label || 'All Fields'}
+                <span className="dropdown-icon">▾</span>
+              </button>
+              {isFilterOpen && (
+                <div className="dropdown-menu">
+                  {searchFilters.map((filter) => (
+                    <button
+                      key={filter.id}
+                      type="button"
+                      className={`dropdown-item ${searchField === filter.id ? 'active' : ''}`}
+                      onClick={() => {
+                        setSearchField(filter.id)
+                        setIsFilterOpen(false)
+                      }}
+                    >
+                      {filter.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {searchQuery && (
             <p className="search-summary">
               {searchResults.length} destination{searchResults.length === 1 ? '' : 's'} found
             </p>
           )}
         </div>
-        <div className="home-visuals">
-          <img src={bannerOne} alt="Travel guide illustration" />
-          <img src={bannerTwo} alt="Smart travel planning illustration" />
-          <img src={bannerThree} alt="Trip inspiration illustration" />
-        </div>
         {searchQuery && (
-          <div className="destination-list search-results">
+          <div className="search-results-list">
             {searchResults.length > 0 ? (
               searchResults.map((item) => (
-                <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
+                <article key={item.id} className="search-result-card">
+                  <div className="search-result-header">
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>{item.category}</p>
+                    </div>
+                    <span className="budget-pill">{item.budget}</span>
+                  </div>
+                  <div className="search-result-meta">
+                    <span>Best Time: {item.bestMonth}</span>
+                    <span>{item.duration}</span>
+                  </div>
+                  <p className="destination-description">{item.description}</p>
+                  <div className="destination-tags">
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="tag-pill">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    className="destination-button"
+                    onClick={() => onExplore && onExplore('destinationdetails', item.id)}
+                  >
+                    Explore
+                  </button>
+                </article>
               ))
             ) : (
               <p className="empty-state">No destinations match your search yet. Try a different travel idea.</p>
@@ -159,91 +217,25 @@ function Home({ onExplore }) {
         )}
       </section>
 
-      <section className="home-section home-style-matcher">
+      <section className="home-section home-featured-groups" id="featured-collections">
         <div className="section-header">
-          <h2>Find Your Travel Style</h2>
-          <p>Select a travel style and see destination matches instantly.</p>
+          <h2>Featured travel collections</h2>
+          <p>Explore our curated destination groups with quick previews for every traveler.</p>
         </div>
-        <div className="option-list">
-          {travelStyles.map((style) => (
-            <button
-              key={style.id}
-              type="button"
-              className={`option-button ${selectedStyle === style.id ? 'active' : ''}`}
-              onClick={() => setSelectedStyle(style.id)}
-            >
-              {style.label}
-            </button>
+        <div className="featured-groups-grid">
+          {featuredGroups.map((group) => (
+            <FeatureGroupCard
+              key={group.id}
+              title={group.title}
+              description={group.description}
+              items={group.items}
+              onExplore={onExplore}
+            />
           ))}
-        </div>
-        <div className="destination-list">
-          {styleMatches.map((item) => (
-            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
-          ))}
-          {styleMatches.length === 0 && (
-            <p className="empty-state">No matching destinations found for this style yet.</p>
-          )}
         </div>
       </section>
 
-      <section className="home-section home-weekend-finder">
-        <div className="section-header">
-          <h2>Weekend Escape Finder</h2>
-          <p>Quick suggestions for short trips, student-friendly plans, and calm escapes.</p>
-        </div>
-        <div className="option-list">
-          {weekendOptions.map((option) => (
-            <button
-              key={option.id}
-              type="button"
-              className={`option-button ${selectedWeekend === option.id ? 'active' : ''}`}
-              onClick={() => setSelectedWeekend(option.id)}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
-        <div className="destination-list">
-          {weekendMatches.map((item) => (
-            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
-          ))}
-          {weekendMatches.length === 0 && (
-            <p className="empty-state">No weekend escapes fit this filter. Try another option.</p>
-          )}
-        </div>
-      </section>
-
-      <section className="home-section home-destinations">
-        <div className="home-headline">
-          <h2>Beginner Friendly Trips</h2>
-          <p>Safe, easy, and affordable options for first-time travelers.</p>
-        </div>
-        <div className="destination-list">
-          {beginnerFriendlyTrips.slice(0, 4).map((item) => (
-            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
-          ))}
-          {beginnerFriendlyTrips.length === 0 && (
-            <p className="empty-state">No beginner friendly trips found right now.</p>
-          )}
-        </div>
-      </section>
-
-      <section className="home-section home-destinations">
-        <div className="home-headline">
-          <h2>Peaceful Escapes</h2>
-          <p>Relaxing low-crowd destinations for calm nature and restful travel.</p>
-        </div>
-        <div className="destination-list">
-          {peacefulEscapes.slice(0, 4).map((item) => (
-            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
-          ))}
-          {peacefulEscapes.length === 0 && (
-            <p className="empty-state">No peaceful escapes found right now.</p>
-          )}
-        </div>
-      </section>
-
-      <section className="home-section travel-responsible">
+      <section className="home-section travel-responsible" id="travel-responsible">
         <div className="home-headline">
           <h2>Travel Responsibly</h2>
           <p>Explore with care: protect nature, support local guides, and reduce plastic waste.</p>
@@ -261,30 +253,6 @@ function Home({ onExplore }) {
             <h4>Support locals</h4>
             <p>Pick local stays, authentic food spots, and community-led experiences.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="home-section home-destinations">
-        <div className="home-headline">
-          <h2>Trending Destinations</h2>
-          <p>Popular destinations for easy planning and memorable stays.</p>
-        </div>
-        <div className="destination-list">
-          {trendingDestinations.slice(0, 4).map((item) => (
-            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
-          ))}
-        </div>
-      </section>
-
-      <section className="home-section home-destinations">
-        <div className="home-headline">
-          <h2>Hidden Gems</h2>
-          <p>Less crowded places with calm nature and thoughtful local experiences.</p>
-        </div>
-        <div className="destination-list">
-          {hiddenGems.slice(0, 4).map((item) => (
-            <DestinationCard key={item.id} destination={item} onExplore={onExplore} />
-          ))}
         </div>
       </section>
     </div>

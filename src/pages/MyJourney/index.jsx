@@ -1,32 +1,16 @@
 import { useEffect, useState } from 'react'
 import { destinations } from '../../data/destinations'
+import ReminderAlert from './components/ReminderAlert'
+import JourneySummary from './components/JourneySummary'
+import JourneyCard from './components/JourneyCard'
+import ReviewCard from './components/ReviewCard'
+import { getStatusFromDate, daysUntil } from './utils/tripUtils'
 import './index.css'
-
-const getStatusFromDate = (dateString) => {
-  if (!dateString) return 'Upcoming'
-  const date = new Date(`${dateString}T00:00:00`)
-  if (Number.isNaN(date.getTime())) return 'Upcoming'
-  const now = new Date()
-  if (date > now) return 'Upcoming'
-  return 'Completed'
-}
-
-const daysUntil = (dateString) => {
-  const date = new Date(`${dateString}T00:00:00`)
-  if (Number.isNaN(date.getTime())) return null
-  const now = new Date()
-  const diff = Math.ceil((date - now) / (1000 * 60 * 60 * 24))
-  return diff
-}
 
 function MyJourney({ onExplore, user }) {
   const [savedTrips, setSavedTrips] = useState([])
   const [reviews, setReviews] = useState([])
   const [activeReviewTripId, setActiveReviewTripId] = useState(null)
-  const [reviewName, setReviewName] = useState('')
-  const [reviewRating, setReviewRating] = useState(5)
-  const [reviewComment, setReviewComment] = useState('')
-  const [reviewMessage, setReviewMessage] = useState('')
   const [reminder, setReminder] = useState(null)
 
   useEffect(() => {
@@ -96,25 +80,19 @@ function MyJourney({ onExplore, user }) {
 
   const openReviewForm = (tripId) => {
     setActiveReviewTripId(tripId)
-    setReviewName(user?.username || '')
-    setReviewRating(5)
-    setReviewComment('')
-    setReviewMessage('')
   }
 
   const closeReviewForm = () => {
     setActiveReviewTripId(null)
-    setReviewMessage('')
   }
 
-  const handleSubmitReview = (trip) => {
+  const handleSubmitReview = (trip, reviewRating, reviewComment) => {
     if (!user) {
-      setReviewMessage('Login first to share your experience.')
-      return
+      return { success: false, message: 'Login first to share your experience.' }
     }
+
     if (!reviewComment.trim()) {
-      setReviewMessage('Please add a comment for your review.')
-      return
+      return { success: false, message: 'Please add a comment for your review.' }
     }
 
     const newReview = {
@@ -131,7 +109,7 @@ function MyJourney({ onExplore, user }) {
     setReviews(updatedReviews)
     localStorage.setItem('smartTravelHubReviews', JSON.stringify(updatedReviews))
     setActiveReviewTripId(null)
-    setReviewMessage('Review shared successfully.')
+    return { success: true, message: 'Review shared successfully.' }
   }
 
   const groupedTrips = {
@@ -149,24 +127,9 @@ function MyJourney({ onExplore, user }) {
         </p>
       </section>
 
-      {reminder && (
-        <section className="journey-alert">
-          <strong>🌍 Upcoming Trip Alert</strong>
-          <p>
-            Your {reminder.trip.destination} trip starts in {reminder.trip.days} days.
-            Suggested: {reminder.destination?.packing.slice(0, 2).join(', ')}.
-          </p>
-        </section>
-      )}
+      {reminder && <ReminderAlert reminder={reminder} />}
 
-      <section className="journey-summary">
-        {Object.entries(groupedTrips).map(([label, trips]) => (
-          <div key={label} className="journey-group-card">
-            <h3>{label} trips</h3>
-            <p>{trips.length} trip{trips.length === 1 ? '' : 's'} recorded</p>
-          </div>
-        ))}
-      </section>
+      <JourneySummary groupedTrips={groupedTrips} />
 
       {['Upcoming', 'Completed'].map((sectionKey) => (
         <section key={sectionKey} className="journey-section">
@@ -187,110 +150,22 @@ function MyJourney({ onExplore, user }) {
                 const destinationMeta = destinations.find(
                   (item) => item.id === trip.destinationId || item.name === trip.destination,
                 )
+
                 return (
-                  <article key={trip.id} className="journey-card">
-                    <img
-                      className="journey-image"
-                      src={destinationMeta?.image}
-                      alt={trip.destination}
-                    />
-                    <div className="journey-body">
-                      <div className="journey-row">
-                        <div>
-                          <h4>{trip.destination}</h4>
-                          <p>{trip.date}</p>
-                        </div>
-                        <div className="journey-status-group">
-                          {trip.bookingStatus && (
-                            <span className="booking-badge">{trip.bookingStatus}</span>
-                          )}
-                          <span className={`status-badge status-${trip.status.toLowerCase()}`}>
-                            {trip.status}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="journey-details">
-                        <span>Travelers: {trip.travelers}</span>
-                        <span>Duration: {trip.duration}</span>
-                        <span>Transport: {trip.transportType}</span>
-                        <span>Accommodation: {trip.accommodationType || 'Standard stay'}</span>
-                      </div>
-                      <div className="journey-budget">
-                        <div>
-                          <small>Total</small>
-                          <strong>₹{trip.budget.toLocaleString()}</strong>
-                        </div>
-                        <div>
-                          <small>Per person</small>
-                          <strong>₹{trip.summary.costPerPerson.toLocaleString()}</strong>
-                        </div>
-                      </div>
-                      <div className="journey-actions">
-                        <button type="button" onClick={() => onExplore('destinationdetails', trip.destinationId)}>
-                          View destination
-                        </button>
-                        <button type="button" onClick={() => handleReplan(trip)}>
-                          Replan Trip
-                        </button>
-                        <button type="button" className="delete-button" onClick={() => handleDelete(trip.id)}>
-                          Remove Trip
-                        </button>
-                        {trip.status === 'Completed' && !hasReview(trip.id) && (
-                          <button type="button" onClick={() => openReviewForm(trip.id)}>
-                            Share Experience
-                          </button>
-                        )}
-                        {trip.status === 'Completed' && hasReview(trip.id) && (
-                          <span className="review-status">Reviewed</span>
-                        )}
-                      </div>
-
-                      {activeReviewTripId === trip.id && (
-                        <form
-                          className="review-form"
-                          onSubmit={(event) => {
-                            event.preventDefault()
-                            handleSubmitReview(trip)
-                          }}
-                        >
-                          <div className="review-row">
-                            <div className="review-note">
-                              Reviewing as <strong>{reviewName || 'Guest'}</strong>
-                            </div>
-                            <label>
-                              Rating
-                              <select
-                                value={reviewRating}
-                                onChange={(event) => setReviewRating(event.target.value)}
-                              >
-                                {[5, 4, 3, 2, 1].map((value) => (
-                                  <option key={value} value={value}>
-                                    {value} star{value > 1 ? 's' : ''}
-                                  </option>
-                                ))}
-                              </select>
-                            </label>
-                          </div>
-                          <label>
-                            Comment
-                            <textarea
-                              value={reviewComment}
-                              onChange={(event) => setReviewComment(event.target.value)}
-                              placeholder="Share what you enjoyed and what future travelers should know."
-                            />
-                          </label>
-                          <div className="review-actions">
-                            <button type="submit">Send Review</button>
-                            <button type="button" className="delete-button" onClick={closeReviewForm}>
-                              Cancel
-                            </button>
-                          </div>
-                          {reviewMessage && <p className="review-message">{reviewMessage}</p>}
-                        </form>
-                      )}
-                    </div>
-                  </article>
+                  <JourneyCard
+                    key={trip.id}
+                    trip={trip}
+                    destinationMeta={destinationMeta}
+                    onExplore={onExplore}
+                    onDelete={handleDelete}
+                    onReplan={handleReplan}
+                    onReviewSubmit={handleSubmitReview}
+                    hasReview={hasReview}
+                    activeReviewTripId={activeReviewTripId}
+                    onOpenReview={openReviewForm}
+                    onCloseReview={closeReviewForm}
+                    user={user}
+                  />
                 )
               })}
             </div>
@@ -306,16 +181,7 @@ function MyJourney({ onExplore, user }) {
           </div>
           <div className="review-list">
             {reviews.map((review) => (
-              <article key={review.id} className="review-card">
-                <div className="review-top-row">
-                  <div>
-                    <h4>{review.name}</h4>
-                    <p>{review.destination}</p>
-                  </div>
-                  <span className="rating-pill">{review.rating} ★</span>
-                </div>
-                <p>{review.comment}</p>
-              </article>
+              <ReviewCard key={review.id} review={review} />
             ))}
           </div>
         </section>

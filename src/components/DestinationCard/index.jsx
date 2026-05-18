@@ -1,24 +1,26 @@
 import './index.css'
 
-const FALLBACK_IMAGE_URL = 'https://via.placeholder.com/800x500.png?text=Image+not+available'
+const FALLBACK_IMAGE_URL = new URL('../../../assets/images/destinations/fallback.jpg', import.meta.url).href
 
 function DestinationCard({ destination, onExplore }) {
   return (
     <article className="destination-card">
-      <img
-        className="destination-image"
-        src={destination.image}
-        alt={destination.name}
-        onError={(event) => {
-          event.currentTarget.src = FALLBACK_IMAGE_URL
-        }}
-      />
-      <div className="card-header">
-        <div>
-          <h3>{destination.name}</h3>
-          <p className="destination-category">{destination.category}</p>
+      <div className="destination-image-wrap">
+        <img
+          className="destination-image"
+          src={destination.image}
+          alt={destination.name}
+          onError={(event) => {
+            event.currentTarget.src = FALLBACK_IMAGE_URL
+          }}
+        />
+        <div className="destination-image-overlay">
+          <div>
+            <h3>{destination.name}</h3>
+            <p className="destination-category">{destination.category}</p>
+          </div>
+          <span className="budget-pill">{destination.budget}</span>
         </div>
-        <span className="budget-pill">{destination.budget}</span>
       </div>
       <div className="destination-meta">
         <span>Best Time: {destination.bestMonth}</span>

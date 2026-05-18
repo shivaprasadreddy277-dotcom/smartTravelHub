@@ -1,0 +1,154 @@
+.search-destinations-page {
+  display: grid;
+  gap: 40px;
+  padding: 20px;
+}
+
+.search-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #0f172a;
+}
+
+.search-header p {
+  margin: 0;
+  color: #475569;
+  max-width: 48rem;
+}
+
+.search-section {
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid #e5e8ef;
+}
+
+.search-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.search-field input {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid #d1d5db;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.search-dropdown {
+  position: relative;
+  max-width: 280px;
+}
+
+.dropdown-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #0f172a;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.dropdown-icon {
+  margin-left: 12px;
+  color: #64748b;
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.dropdown-item {
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  background: #eff6ff;
+}
+
+.search-summary {
+  color: #475569;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.search-results {
+  display: grid;
+  gap: 24px;
+}
+
+.destination-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.search-placeholder {
+  padding: 60px 20px;
+  text-align: center;
+  color: #64748b;
+  background: #f8fafc;
+  border-radius: 18px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  color: #64748b;
+  padding: 26px;
+  background: #f8fafc;
+  border-radius: 18px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .destination-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 840px) {
+  .search-destinations-page {
+    padding: 0;
+  }
+
+  .destination-list {
+    grid-template-columns: 1fr;
+  }
+
+  .search-header h1 {
+    font-size: 1.6rem;
+  }
+}

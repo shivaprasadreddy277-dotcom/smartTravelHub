@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { destinations } from '../../data/destinations'
 import './index.css'
 
-const FALLBACK_IMAGE_URL = 'https://via.placeholder.com/800x500.png?text=Image+not+available'
+const FALLBACK_IMAGE_URL = new URL('../../assets/images/destinations/fallback.jpg', import.meta.url).href
 
 function DestinationDetails({ selectedDestinationId, onExplore }) {
   const [viewMode, setViewMode] = useState('overview')
@@ -13,7 +13,10 @@ function DestinationDetails({ selectedDestinationId, onExplore }) {
   const destination =
     destinations.find((item) => item.id === selectedDestinationId) || destinations[0]
 
-  const galleryImages = [destination.image, ...(destination.gallery ?? [destination.image, destination.image])].slice(0, 3)
+  const galleryImages = [
+    destination.image,
+    ...(destination.gallery ?? [destination.image, destination.image, destination.image]),
+  ].slice(0, 4)
   const famousForText = Array.isArray(destination.famousFor)
     ? destination.famousFor.join(', ')
     : destination.famousFor
@@ -79,18 +82,33 @@ function DestinationDetails({ selectedDestinationId, onExplore }) {
         </p>
       </div>
 
-      <div className="details-gallery">
-        {galleryImages.map((image, index) => (
+      <div className="details-hero">
+        <img
+          className="details-hero-image"
+          src={destination.image}
+          alt={`${destination.name} main view`}
+          onError={(event) => {
+            event.currentTarget.src = FALLBACK_IMAGE_URL
+          }}
+        />
+        <div className="details-hero-banner">
+          <p>{destination.category}</p>
+          <h3>{famousForText}</h3>
+        </div>
+      </div>
+
+      <section className="details-gallery-grid">
+        {galleryImages.slice(1).map((image, index) => (
           <img
-            key={`${destination.id}-${index}`}
+            key={`${destination.id}-gallery-${index}`}
             src={image}
-            alt={`${destination.name} view ${index + 1}`}
+            alt={`${destination.name} gallery ${index + 1}`}
             onError={(event) => {
               event.currentTarget.src = FALLBACK_IMAGE_URL
             }}
           />
         ))}
-      </div>
+      </section>
 
       <div className="details-navigation">
         <button

@@ -3,6 +3,9 @@ import './index.css'
 function Navbar({ activePage, onNavigate, user, onLogout }) {
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'search', label: 'Search' },
+    { id: 'travelfinder', label: 'Travel Finder' },
+    { id: 'collections', label: 'Collections' },
     { id: 'planner', label: 'Planner' },
     { id: 'myjourney', label: 'My Journey' },
   ]
