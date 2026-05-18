@@ -348,7 +348,7 @@ export const destinations = [
   {
     id: 'hampi',
     name: 'Hampi',
-    image: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.pexels.com/photos/3889843/pexels-photo-3889843.jpeg',
     gallery: [
       'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
@@ -406,7 +406,7 @@ export const destinations = [
   {
     id: 'tirupati',
     name: 'Tirupati',
-    image: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.pexels.com/photos/3581364/pexels-photo-3581364.jpeg',
     gallery: [
       'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
@@ -435,7 +435,7 @@ export const destinations = [
   {
     id: 'varanasi',
     name: 'Varanasi',
-    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.pexels.com/photos/2413613/pexels-photo-2413613.jpeg',
     gallery: [
       'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
@@ -464,7 +464,7 @@ export const destinations = [
   {
     id: 'rameshwaram',
     name: 'Rameshwaram',
-    image: 'https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.pexels.com/photos/784879/pexels-photo-784879.jpeg',
     gallery: [
       'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=800&q=80',
@@ -490,4 +490,5 @@ export const destinations = [
       { type: 'Premium Resort', cost: '?3,500–5,500', example: 'Resort hotels' },
     ],
   },
-]
+]
+

@@ -31,15 +31,24 @@
   font-size: 1.1rem;
 }
 
-.navbar-logo {
-  display: block;
-  font-size: 1.05rem;
+
+
+.navbar-search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #eff5ff;
+  color: #2563eb;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.navbar-tagline {
-  display: block;
-  font-size: 0.85rem;
-  color: #64748b;
+.navbar-search-icon:hover {
+  background: #dbeafe;
 }
 
 .navbar-links {

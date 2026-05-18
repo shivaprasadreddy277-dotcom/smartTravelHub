@@ -14,10 +14,10 @@ function Navbar({ activePage, onNavigate, user, onLogout }) {
     <header className="navbar">
       <div className="navbar-brand">
         <div className="brand-icon">🌴</div>
-        <div>
-          <span className="navbar-logo">SmartTravelHub</span>
-          <span className="navbar-tagline">Smart Indian tourism assistant</span>
-        </div>
+      </div>
+
+      <div className="navbar-search-icon" onClick={() => onNavigate('search')}>
+        <span role="img" aria-label="search">🔍</span>
       </div>
 
       <nav className="navbar-links">
