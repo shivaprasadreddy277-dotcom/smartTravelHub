@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { destinations } from '../../data/destinations'
+import { getUserLocalStorage, setUserLocalStorage } from '../../utils/storageUtils'
 import './index.css'
 
 const transportRates = {
@@ -102,18 +103,9 @@ useEffect(() => {
 }, [accommodationType])
 
   useEffect(() => {
-
-    const raw = localStorage.getItem('smartTravelHubTrips')
-
-    if (raw) {
-      try {
-        setSavedTrips(JSON.parse(raw))
-      } catch {
-        setSavedTrips([])
-      }
-    }
-
-  }, [])
+    const trips = getUserLocalStorage('smartTravelHubTrips', user?.username || 'guest') || []
+    setSavedTrips(trips)
+  }, [user?.username])
 
   const selectedDestination =
     destinations.find((item) => item.id === destinationId)
@@ -262,10 +254,7 @@ const handleCancelPlanning = () => {
 
     setSavedTrips(updatedTrips)
 
-    localStorage.setItem(
-      'smartTravelHubTrips',
-      JSON.stringify(updatedTrips)
-    )
+    setUserLocalStorage('smartTravelHubTrips', user.username, updatedTrips)
 
     setConfirmationTrip(trip)
 

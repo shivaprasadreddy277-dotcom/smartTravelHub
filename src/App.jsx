@@ -9,6 +9,7 @@ import Collections from './pages/Collections'
 import SearchDestinations from './pages/SearchDestinations'
 import DestinationDetails from './pages/DestinationDetails'
 import Login from './pages/Login'
+import { clearUserStorage } from './utils/storageUtils'
 import './styles/app.css'
 
 const pageMap = {
@@ -41,6 +42,19 @@ function App() {
   }, [])
 
   const handleLogin = (userData) => {
+    // Clear previous user's data if switching users
+    const previousUser = localStorage.getItem('smartTravelHubUser')
+    if (previousUser) {
+      try {
+        const prevUserData = JSON.parse(previousUser)
+        if (prevUserData.username !== userData.username) {
+          clearUserStorage(prevUserData.username)
+        }
+      } catch {
+        // Ignore parse errors
+      }
+    }
+
     localStorage.setItem('smartTravelHubToken', 'smarttravelhub-user-session')
     localStorage.setItem('smartTravelHubUser', JSON.stringify(userData))
     setUser(userData)
@@ -48,6 +62,10 @@ function App() {
   }
 
   const handleLogout = () => {
+    // Clear current user's data
+    if (user) {
+      clearUserStorage(user.username)
+    }
     localStorage.removeItem('smartTravelHubToken')
     localStorage.removeItem('smartTravelHubUser')
     setUser(null)

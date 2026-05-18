@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { destinations } from '../../data/destinations'
+import { getUserLocalStorage, setUserLocalStorage } from '../../utils/storageUtils'
 import ReminderAlert from './components/ReminderAlert'
 import JourneySummary from './components/JourneySummary'
 import JourneyCard from './components/JourneyCard'
@@ -13,33 +14,21 @@ function MyJourney({ onExplore, user }) {
   const [activeReviewTripId, setActiveReviewTripId] = useState(null)
   const [reminder, setReminder] = useState(null)
 
-  useEffect(() => {
-    const raw = localStorage.getItem('smartTravelHubTrips')
-    if (!raw) return
-
-    try {
-      const trips = JSON.parse(raw)
-      const updated = trips.map((trip) => ({
-        ...trip,
-        status: getStatusFromDate(trip.date),
-      }))
-      setSavedTrips(updated)
-    } catch {
-      setSavedTrips([])
-    }
-  }, [])
+  const userId = user?.username || 'guest'
 
   useEffect(() => {
-    const raw = localStorage.getItem('smartTravelHubReviews')
-    if (!raw) return
+    const trips = getUserLocalStorage('smartTravelHubTrips', userId) || []
+    const updated = trips.map((trip) => ({
+      ...trip,
+      status: getStatusFromDate(trip.date),
+    }))
+    setSavedTrips(updated)
+  }, [userId])
 
-    try {
-      const storedReviews = JSON.parse(raw)
-      setReviews(storedReviews)
-    } catch {
-      setReviews([])
-    }
-  }, [])
+  useEffect(() => {
+    const storedReviews = getUserLocalStorage('smartTravelHubReviews', userId) || []
+    setReviews(storedReviews)
+  }, [userId])
 
   useEffect(() => {
     const upcoming = savedTrips
@@ -68,11 +57,11 @@ function MyJourney({ onExplore, user }) {
   const handleDelete = (id) => {
     const nextTrips = savedTrips.filter((trip) => trip.id !== id)
     setSavedTrips(nextTrips)
-    localStorage.setItem('smartTravelHubTrips', JSON.stringify(nextTrips))
+    setUserLocalStorage('smartTravelHubTrips', userId, nextTrips)
   }
 
   const handleReplan = (trip) => {
-    localStorage.setItem('smartTravelHubReplan', JSON.stringify(trip))
+    setUserLocalStorage('smartTravelHubReplan', userId, trip)
     onExplore('planner')
   }
 
@@ -107,7 +96,7 @@ function MyJourney({ onExplore, user }) {
 
     const updatedReviews = [newReview, ...reviews]
     setReviews(updatedReviews)
-    localStorage.setItem('smartTravelHubReviews', JSON.stringify(updatedReviews))
+    setUserLocalStorage('smartTravelHubReviews', userId, updatedReviews)
     setActiveReviewTripId(null)
     return { success: true, message: 'Review shared successfully.' }
   }
