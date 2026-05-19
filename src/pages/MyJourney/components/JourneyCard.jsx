@@ -8,6 +8,7 @@ function JourneyCard({
   onExplore,
   onDelete,
   onModify,
+  onComplete,
   onSubmitReview,
   hasReview,
   activeReviewTripId,
@@ -73,6 +74,11 @@ function JourneyCard({
           <button type="button" className="delete-button" onClick={() => onDelete(trip.id)}>
             Remove Trip
           </button>
+          {trip.status === 'Ongoing' && onComplete && (
+            <button type="button" onClick={() => onComplete(trip.id)}>
+              Complete Trip
+            </button>
+          )}
           {trip.status === 'Completed' && !hasReview(trip.id) && (
             <button type="button" onClick={() => onReview(trip.id)}>
               Share Experience

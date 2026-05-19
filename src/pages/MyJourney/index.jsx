@@ -30,7 +30,7 @@ function MyJourney({ onExplore, user }) {
   // Find upcoming trip for reminder (within 7 days)
   useEffect(() => {
     const upcomingTrips = savedTrips
-      .filter((trip) => getTripStatus(trip.startDate, trip.endDate) === 'Upcoming')
+      .filter((trip) => !trip.isManuallyCompleted && getTripStatus(trip.startDate, trip.endDate) === 'Upcoming')
       .map((trip) => ({
         ...trip,
         daysUntil: daysUntilTrip(trip.startDate),
@@ -107,11 +107,24 @@ function MyJourney({ onExplore, user }) {
     return { success: true, message: 'Review shared successfully.' }
   }
 
+  const handleCompleteTrip = (tripId) => {
+    const nextTrips = savedTrips.map((trip) =>
+      trip.id === tripId ? { ...trip, isManuallyCompleted: true } : trip
+    )
+    setSavedTrips(nextTrips)
+    setUserLocalStorage('smartTravelHubTrips', userId, nextTrips)
+  }
+
+  const processedTrips = savedTrips.map((trip) => ({
+    ...trip,
+    status: trip.isManuallyCompleted ? 'Completed' : getTripStatus(trip.startDate, trip.endDate)
+  }))
+
   // Organize trips by status
   const tripsByStatus = {
-    Upcoming: savedTrips.filter((trip) => getTripStatus(trip.startDate, trip.endDate) === 'Upcoming'),
-    Ongoing: savedTrips.filter((trip) => getTripStatus(trip.startDate, trip.endDate) === 'Ongoing'),
-    Completed: savedTrips.filter((trip) => getTripStatus(trip.startDate, trip.endDate) === 'Completed'),
+    Upcoming: processedTrips.filter((trip) => trip.status === 'Upcoming'),
+    Ongoing: processedTrips.filter((trip) => trip.status === 'Ongoing'),
+    Completed: processedTrips.filter((trip) => trip.status === 'Completed'),
   }
 
   return (
@@ -229,6 +242,7 @@ function MyJourney({ onExplore, user }) {
                     onExplore={onExplore}
                     onDelete={handleDelete}
                     onModify={handleModifyTrip}
+                    onComplete={handleCompleteTrip}
                     onReview={openReviewForm}
                     hasReview={hasReview}
                     activeReviewTripId={activeReviewTripId}
