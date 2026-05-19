@@ -38,12 +38,12 @@ function Navbar({ activePage, onNavigate, user, onLogout }) {
           <>
             <span className="navbar-welcome">Welcome, {user.username}</span>
             <button type="button" className="logout-button" onClick={onLogout}>
-              Logout
+              Sign Out
             </button>
           </>
         ) : (
           <button type="button" className="login-button" onClick={() => onNavigate('login')}>
-            Login
+            Sign In
           </button>
         )}
       </div>

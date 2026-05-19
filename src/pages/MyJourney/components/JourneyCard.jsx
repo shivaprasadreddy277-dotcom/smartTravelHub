@@ -7,11 +7,11 @@ function JourneyCard({
   destinationMeta,
   onExplore,
   onDelete,
-  onReplan,
-  onReviewSubmit,
+  onModify,
+  onSubmitReview,
   hasReview,
   activeReviewTripId,
-  onOpenReview,
+  onReview,
   onCloseReview,
   user,
 }) {
@@ -33,7 +33,7 @@ function JourneyCard({
         <div className="journey-row">
           <div>
             <h4>{trip.destination}</h4>
-            <p>{trip.date}</p>
+            <p>{trip.startDate}</p>
           </div>
           <div className="journey-status-group">
             {trip.bookingStatus && (
@@ -55,7 +55,7 @@ function JourneyCard({
         <div className="journey-budget">
           <div>
             <small>Total</small>
-            <strong>₹{trip.budget.toLocaleString()}</strong>
+            <strong>₹{trip.totalBudget.toLocaleString()}</strong>
           </div>
           <div>
             <small>Per person</small>
@@ -67,14 +67,14 @@ function JourneyCard({
           <button type="button" onClick={() => onExplore('destinationdetails', trip.destinationId)}>
             View destination
           </button>
-          <button type="button" onClick={() => onReplan(trip)}>
+          <button type="button" onClick={() => onModify(trip)}>
             Replan Trip
           </button>
           <button type="button" className="delete-button" onClick={() => onDelete(trip.id)}>
             Remove Trip
           </button>
           {trip.status === 'Completed' && !hasReview(trip.id) && (
-            <button type="button" onClick={() => onOpenReview(trip.id)}>
+            <button type="button" onClick={() => onReview(trip.id)}>
               Share Experience
             </button>
           )}
@@ -86,7 +86,7 @@ function JourneyCard({
         {activeReviewTripId === trip.id && !hasReview(trip.id) && (
           <ReviewForm
             reviewerName={user?.username}
-            onSubmit={(rating, comment) => onReviewSubmit(trip, rating, comment)}
+            onSubmit={(rating, comment) => onSubmitReview(trip, rating, comment)}
             onCancel={onCloseReview}
           />
         )}

@@ -691,7 +691,7 @@ const handleCancelPlanning = () => {
             <span>Total Budget</span>
 
             <strong>
-              ₹{confirmationTrip.budget.toLocaleString()}
+              ₹{confirmationTrip.totalBudget.toLocaleString()}
             </strong>
           </div>
 

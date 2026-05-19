@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 
 function Login({ user, onLogin }) {
@@ -7,6 +7,17 @@ function Login({ user, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isSignUp, setIsSignUp] = useState(true);
+
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('hasVisitedBefore');
+    if (hasVisited) {
+      setIsSignUp(false);
+    } else {
+      localStorage.setItem('hasVisitedBefore', 'true');
+      setIsSignUp(true);
+    }
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -76,7 +87,7 @@ function Login({ user, onLogin }) {
         </p>
 
         <h2>
-          Sign in to continue your travel journey
+          {isSignUp ? "Create your account to start your journey" : "Sign in to continue your travel journey"}
         </h2>
 
         <p className="login-subtitle">
@@ -145,8 +156,27 @@ function Login({ user, onLogin }) {
             </label>
 
             <button type="submit">
-              Login to SmartTravelHub
+              {isSignUp ? "Sign Up to SmartTravelHub" : "Sign In to SmartTravelHub"}
             </button>
+
+            <p style={{ textAlign: "center", marginTop: "1rem", color: "#64748b" }}>
+              {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+              <button
+                type="button"
+                onClick={() => setIsSignUp(!isSignUp)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "#3b82f6",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  padding: 0,
+                  fontSize: "inherit"
+                }}
+              >
+                {isSignUp ? "Sign In" : "Sign Up"}
+              </button>
+            </p>
 
             {message && (
               <p className="login-message">
